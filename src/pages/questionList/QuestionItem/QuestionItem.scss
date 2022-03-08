@@ -1,0 +1,22 @@
+.questionItem{
+    box-sizing:border-box;
+    width: 89.3334vw;
+    height: 21.3333vw;
+    background: #FFFFFF;
+    box-shadow: 0vw 0vw 0.8vw 0vw rgba(0,0,0,0.1);
+    border-radius: 1.0667vw;
+    // line-height: 21.3333vw;
+    padding: 4.2667vw 5.3333vw;
+    margin-bottom: 5.3333vw;
+    display: flex;
+    flex-direction:column;
+    justify-content:space-between;
+    .questionItem-title{
+        height: 4vw;
+        font-size: 3.2vw;
+    }
+    .questionItem-time{
+        height: 4vw;
+        font-size: 3.2vw;
+    }
+}

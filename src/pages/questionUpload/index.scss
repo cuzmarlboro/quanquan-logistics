@@ -1,0 +1,36 @@
+.questionUpload{
+    padding: 5.3333vw;
+    margin-top: 5.3333vw;
+    .questionUpload-label{
+        font-size: 4vw;
+        margin-bottom: 3.2vw;
+        color: #767B83;
+    }
+    .questionUpload-textarea{
+        width: 89.3333vw;
+        height: 42.6667vw;
+        box-sizing: border-box;
+        background: #FFFFFF;
+        border-radius: 1.0667vw;
+        border: 0.1333vw solid #CDD3DF;
+        padding-left: 3.2vw;
+        padding-top: 3.2vw;
+        margin-bottom: 5.3333vw;
+    }
+    .textarea-placeholder{
+        color: #BCC0C6;
+        font-size: 4vw;
+    }
+    .questionUpload-checkbox{
+        margin-right: 3.2vw;
+    }
+    .questionUpload-save{
+        width: 89.3334vw;
+        height: 11.7333vw;
+        line-height: 11.7333vw;
+        background: #4D85FF;
+        margin-bottom: 2.1333vw;
+        color: #FFFFFF;
+        margin-top: 5.3333vw;
+    }
+}

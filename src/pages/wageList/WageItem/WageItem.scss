@@ -1,0 +1,17 @@
+.wageItem{
+    box-sizing:border-box;
+    width: 89.3334vw;
+    height: 26.3333vw;
+    background: #FFFFFF;
+    box-shadow: 0vw 0vw 0.8vw 0vw rgba(0,0,0,0.1);
+    border-radius: 1.0667vw;
+    padding: 4.2667vw 5.3333vw;
+    margin-bottom: 5.3333vw;
+    display: flex;
+    flex-direction:column;
+    justify-content:space-between;
+    .wageItem-site .wageItem-time .wageItem-money{
+        height: 4vw;
+        font-size: 3.2vw;
+    }
+}

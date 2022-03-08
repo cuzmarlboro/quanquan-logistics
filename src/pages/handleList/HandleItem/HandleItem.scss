@@ -1,0 +1,23 @@
+.handleItem{
+    box-sizing:border-box;
+    width: 89.3334vw;
+    height: 21.3333vw;
+    background: #FFFFFF;
+    box-shadow: 0vw 0vw 0.8vw 0vw rgba(0,0,0,0.1);
+    border-radius: 1.0667vw;
+    line-height: 21.3333vw;
+    padding: 4.2667vw 5.3333vw;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5.3333vw;
+    .handleItem-img{
+        width: 12.8vw;
+        height: 12.8vw;
+        margin-right: 5.3333vw;
+    }
+    .handleItem-svg{
+        margin-left: 38.1333vw;
+        width: 5vw;
+        height: 5vw;
+    }
+}

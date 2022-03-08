@@ -1,3 +1,4 @@
+const path = require('path');
 const config = {
   projectName: 'quanquan-logistics',
   date: '2022-3-6',
@@ -40,6 +41,19 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
       }
+    },
+    // 自定义 Webpack 配置
+    webpackChain(chain, webpack) {
+      chain.merge({
+        resolve: {
+          extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx', '.ts', '.vue'],
+          alias: {
+            "pages": path.resolve(__dirname, "../src/pages"),
+            "assets": path.resolve(__dirname, "../src/assets"),
+            "component": path.resolve(__dirname, "../src/component")
+          }
+        },
+      })
     }
   },
   h5: {

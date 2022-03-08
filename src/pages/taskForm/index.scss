@@ -1,0 +1,34 @@
+.taskForm{
+    padding: 5.3333vw 5.3333vw;
+    .taskForm-tips{
+        padding: 2.6667vw 3.2vw 2.2667vw;
+        width: 89.3333vw;
+        height: 14.5333vw;
+        background: #F2F6FF;
+        border-radius: 1.0667vw;
+        border: 0.1333vw solid #2F70FF;
+        font-size: 3.2vw;
+        color: #2F70FF;
+        line-height: 4.8vw;
+        box-sizing:border-box;
+        margin-bottom: 5.3333vw;
+    }
+    .taskForm-info{
+        margin-right: 2.1333vw;
+        transform: translateY(0.7vw);
+    }
+    .taskForm-title{
+        font-size: 5.3333vw;
+        font-weight: 500;
+        color: #2F3238;
+    }
+    .taskForm-save{
+        width: 89.3334vw;
+        height: 11.7333vw;
+        line-height: 11.7333vw;
+        background: #4D85FF;
+        margin-bottom: 2.1333vw;
+        color: #FFFFFF;
+        margin-top: 5.3333vw;
+    }
+}

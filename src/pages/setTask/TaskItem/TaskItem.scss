@@ -1,0 +1,57 @@
+.taskItem{
+    box-sizing:border-box;
+    width: 89.3334vw;
+    height: 25vh;
+    background: #FFFFFF;
+    box-shadow: 0vw 0vw 0.8vw 0vw rgba(0,0,0,0.1);
+    border-radius: 1.0667vw;
+    line-height: 21.3333vw;
+    padding: 4.2667vw 5.3333vw;
+    margin-bottom: 5.3333vw;
+    .taskItem-site{
+        height: 4.2667vw;
+        line-height: 4.2667vw;
+        font-size: 4.2667vw;
+        margin-bottom: 2.1333vw;
+        .taskItem-interval{
+            display: inline-block;
+            width: 4.2667vw;
+            margin: 0 2.1333vw
+        }
+    }
+    .taskItem-time{
+        height: 4.2667vw;
+        line-height: 4.2667vw;
+        font-size: 4.2667vw;
+        margin-bottom: 2.1333vw;
+    }
+    .taskItem-money{
+        height: 4.2667vw;
+        line-height: 4.2667vw;
+        font-size: 4.2667vw;
+    }
+    .handleList{
+        display: flex;
+        margin-top: 2.6667vw;
+        justify-content: space-between;
+        // align-items: center;
+        .handleItem{
+            width: 20.2667vw;
+            height: 7.4667vw;
+            background: #FFFFFF;
+            border-radius: 5.8667vw;
+            font-size: 3.2vw;
+            text-align: center;
+            line-height: 7.4667vw;
+        }
+        .blueBtn{
+            border: 0.2667vw solid #2F70FF;
+            color: #2F70FF;
+        }
+        .redBtn{
+            border: 0.2667vw solid #FF5D53;
+            color: #FF5D53;
+        }
+    }
+
+}

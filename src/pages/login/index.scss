@@ -1,0 +1,43 @@
+.login{
+    padding: 8.5333vw 5.3333vw;
+    .login-title{
+        font-size: 6.4vw;
+        font-weight: 600;
+        color: #2F3238;
+        margin-bottom: 3.2vw;
+    }
+    .login-tips{
+        font-size: 3.4667vw;
+        font-weight: 400;
+        color: #767B83;
+    }
+    .phone-tips{
+        margin-top: 11.7333vw;
+        margin-bottom: 4.4vw;
+    }
+    .password-tips{
+        margin-top: 4.8667vw;
+        margin-bottom: 4.4vw;
+    }
+    .input-placeholder{
+        color: #BCC0C6;
+    }
+    .hr{
+        margin-top: 4.4vw;
+        width: 89.3333vw;
+        height: 0.1333vw;
+        border-top: 0.1333vw solid transparent;
+        border-bottom: 0.1333vw solid  #DCDEE2;;
+        border-left: 0.1333vw solid transparent;
+        border-right: 0.1333vw solid transparent;
+    }
+    .buttons{
+        margin-top: 8.2667vw;
+        .logoImage{
+            width: 5.4667vw;
+            height: 4.5333vw;
+            margin-right: 2.1333vw;
+            transform: translateY(1.0667vw);
+        }
+    }
+}
