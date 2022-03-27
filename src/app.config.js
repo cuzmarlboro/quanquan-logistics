@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-undef
 export default defineAppConfig({
   pages: [
+    // 'pages/qrCode/index',
     'pages/index/index',
     'pages/login/index',
     'pages/handleList/index',
@@ -11,7 +12,8 @@ export default defineAppConfig({
     'pages/connect/index',
     'pages/iconPage/index',
     'pages/questionUpload/index',
-    'pages/wageList/index'
+    'pages/wageList/index',
+    'pages/qrCode/index'
   ],
   window: {
     backgroundTextStyle: 'light',

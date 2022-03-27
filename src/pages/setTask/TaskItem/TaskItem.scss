@@ -33,7 +33,7 @@
     .handleList{
         display: flex;
         margin-top: 2.6667vw;
-        justify-content: space-between;
+        // justify-content: space-between;
         // align-items: center;
         .handleItem{
             width: 20.2667vw;
@@ -43,6 +43,7 @@
             font-size: 3.2vw;
             text-align: center;
             line-height: 7.4667vw;
+            margin-right: 2.1333vw;
         }
         .blueBtn{
             border: 0.2667vw solid #2F70FF;
@@ -51,6 +52,10 @@
         .redBtn{
             border: 0.2667vw solid #FF5D53;
             color: #FF5D53;
+        }
+        .greyBtn{
+            border: 0.2667vw solid #808080;
+            color: #808080;
         }
     }
 

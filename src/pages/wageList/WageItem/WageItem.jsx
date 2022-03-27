@@ -1,14 +1,31 @@
 import React from 'react'
-import { View, Button } from '@tarojs/components'
+import { View, Button, Checkbox } from '@tarojs/components'
 import './WageItem.scss'
 
 const WageItem = (props) => {
-    const { site, time, money } = props
+    const {
+        taskStart,
+        taskEnd,
+        taskCost,
+        handleChecked,
+        gmtModified,
+        taskCode,
+    } = props
     return (
         <View className="wageItem">
-            <View className="wageItem-site">地址：{site}</View>
-            <View className="wageItem-time">时间：{time}</View>
-            <View className="wageItem-money">金额：{money}</View>
+            <Checkbox
+                className="wageItem-checkbox"
+                onClick={() => {
+                    handleChecked(taskCode)
+                }}
+            />
+            <View className="wageItem-content">
+                <View className="item-site">
+                    地址：{taskStart}-{taskEnd}
+                </View>
+                <View className="item-time">时间：{gmtModified}</View>
+                <View className="item-money">金额：{taskCost}</View>
+            </View>
         </View>
     )
 }

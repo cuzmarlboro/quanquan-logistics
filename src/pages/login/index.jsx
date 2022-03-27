@@ -3,37 +3,38 @@ import Taro from '@tarojs/taro'
 import { View, Input, Image } from '@tarojs/components'
 import ic_wechat from 'assets/img/ic_wechat.png'
 import LoginButton from 'component/LoginButton/index'
+import successToast from 'util/successToast'
+import request from 'service/request'
 import './index.scss'
 
 const login = () => {
     const toHomt = () => {
-        // Taro.getStorage({
-        //     key: 'type',
-        //     success: function (res) {
-        //         console.log('=====', res.data)
-        //     },
-        // })
-        Taro.reLaunch({
-            url: `/pages/handleList/index`,
+        request('public/login', {
+            phone: '17857342199',
+            password: '123456',
+        }).then((res) => {
+            if (res.code === 200) {
+                successToast('登录成功', () => {
+                    Taro.reLaunch({
+                        url: `/pages/handleList/index`,
+                    })
+                })
+            }
         })
-        // Taro.login(option)
     }
     const wxLogin = () => {
-        Taro.login({
-            success: function (res) {
-                console.log({ ...res })
-                if (res.code) {
-                    //发起网络请求
-                    // Taro.request({
-                    //   url: 'https://test.com/onLogin',
-                    //   data: {
-                    //     code: res.code
-                    //   }
-                    // })
-                } else {
-                    console.log('登录失败！' + res.errMsg)
+        Taro.login().then((res) => {
+            request('public/wx/login', {
+                code: res.code,
+            }).then((res) => {
+                if (res.code === 200) {
+                    successToast('登录成功', () => {
+                        Taro.reLaunch({
+                            url: `/pages/handleList/index`,
+                        })
+                    })
                 }
-            },
+            })
         })
     }
     return (

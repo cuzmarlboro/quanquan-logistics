@@ -50,7 +50,9 @@ const config = {
           alias: {
             "pages": path.resolve(__dirname, "../src/pages"),
             "assets": path.resolve(__dirname, "../src/assets"),
-            "component": path.resolve(__dirname, "../src/component")
+            "component": path.resolve(__dirname, "../src/component"),
+            "service": path.resolve(__dirname, "../src/service"),
+            "util": path.resolve(__dirname, "../src/util"),
           }
         },
       })

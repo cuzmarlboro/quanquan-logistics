@@ -10,9 +10,11 @@ const Index = () => {
         Taro.setStorage({
             key: 'type',
             data: type,
-        })
-        Taro.navigateTo({
-            url: `/pages/login/index`,
+            success: () => {
+                Taro.navigateTo({
+                    url: `/pages/login/index`,
+                })
+            },
         })
     }
     return (

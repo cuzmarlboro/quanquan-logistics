@@ -3,11 +3,11 @@ import { View } from '@tarojs/components'
 import './QuestionItem.scss'
 
 const QuestionItem = (props) => {
-    const { title, time, viewDetails } = props
+    const { content, gmtCreate, viewDetails } = props
     return (
         <View className="questionItem" onClick={viewDetails}>
-            <View className="questionItem-title">问题：{title}</View>
-            <View className="questionItem-time">发布时间：{time}</View>
+            <View className="questionItem-title">问题：{content}</View>
+            <View className="questionItem-time">发布时间：{gmtCreate}</View>
         </View>
     )
 }

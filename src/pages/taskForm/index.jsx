@@ -4,43 +4,102 @@ import Taro from '@tarojs/taro'
 import { View, Button, Icon, Input } from '@tarojs/components'
 import InputCom from 'component/InputCom/InputCom'
 import PickerCom from 'component/PickerCom/PickerCom'
+import request from 'service/request'
+import successToast from 'util/successToast'
 
 import './index.scss'
 
 const taskForm = () => {
-    const [date, setDate] = useState('')
-    const [idType, setIdType] = useState(0)
+    const [data, setData] = useState({
+        taskStart: '',
+        taskEnd: '',
+        taskTime: '',
+        taskWeight: '',
+        taskInfo: '',
+        taskCost: '',
+        taskStatus: '',
+        taskCode: '',
+    }) // 表单数据
+    const [idType, setIdType] = useState(0) // 身份
+    const [taskDetail, setTaskDetail] = useState({}) // 任务详情
+
     useEffect(() => {
-        const { type } = Taro.Current.router.params
         Taro.getStorage({
             key: 'type',
             success: function (res) {
                 setIdType(res.data)
+                console.log('res.data', res.data)
             },
         })
-        console.log(type)
+        const { handleType } = Taro.Current.router.params
+        if (handleType === 'edit') {
+            const item = JSON.parse(Taro.Current.router.params.item)
+            const newData = {
+                taskStart: item.taskStart,
+                taskEnd: item.taskEnd,
+                taskTime: item.taskTime,
+                taskWeight: item.taskWeight,
+                taskInfo: item.taskInfo,
+                taskCost: item.taskCost,
+                taskStatus: item.taskStatus,
+                taskCode: item.taskCode,
+            }
+            console.log(newData)
+            setData(newData)
+            setTaskDetail(item)
+        }
     }, [])
     const onInput = (event, type) => {
-        console.log(event, type)
-        switch (type) {
-            case 'time':
-                setDate(event.detail.value)
-        }
+        let newData = { ...data }
+        newData[type] = event.detail.value
+        setData(newData)
     }
+    // 新增 or 编辑
     const saveTask = () => {
-        Taro.showToast({
-            title: '保存成功',
-            icon: 'success',
-            duration: 2000,
-            complete: () => {
-                Taro.reLaunch({
-                    url: `/pages/setTask/index`,
+        const { handleType } = Taro.Current.router.params
+        if (handleType === 'edit' && taskDetail.taskStatus === 1) {
+            Taro.showToast({
+                title: '任务已被接收，无法重新编辑',
+                icon: 'none',
+            })
+            return false
+        }
+        const url = handleType === 'edit' ? 'task/edit' : 'task/add'
+        const text = handleType === 'edit' ? '任务编辑成功' : '任务派发成功'
+        const params =
+            handleType === 'edit'
+                ? { ...data, taskCode: taskDetail.taskCode }
+                : data
+        request(url, params).then((res) => {
+            if (res.code === 200) {
+                successToast(text, () => {
+                    Taro.reLaunch({
+                        url: `/pages/setTask/index`,
+                    })
                 })
-            },
+            }
         })
     }
+    // 接收任务
     const acceptTask = () => {
-        console.log('acceptTask')
+        if (taskDetail.taskStatus === 1) {
+            Taro.showToast({
+                title: '您已接收该任务',
+                icon: 'success',
+            })
+        } else {
+            request(`task/accept?taskCode=${taskDetail.taskCode}`).then(
+                (res) => {
+                    if (res.code === 200) {
+                        successToast('任务接收成功', () => {
+                            Taro.reLaunch({
+                                url: `/pages/setTask/index`,
+                            })
+                        })
+                    }
+                }
+            )
+        }
     }
     return (
         <View className="taskForm">
@@ -55,29 +114,27 @@ const taskForm = () => {
                 label="起始地"
                 placeholder="请输入起始地"
                 disabled={idType}
-                value=""
+                value={data.taskStart}
                 onInput={(e) => {
-                    onInput(e, 'start')
+                    onInput(e, 'taskStart')
                 }}
             />
             <InputCom
                 label="目的地"
                 placeholder="请输入目的地"
-                value=""
+                value={data.taskEnd}
                 disabled={idType}
                 onInput={(e) => {
-                    onInput(e, 'end')
+                    onInput(e, 'taskEnd')
                 }}
             />
             <PickerCom
                 label="送货时间"
                 placeholder="请选择送货时间"
-                value=""
                 disabled={idType}
-                // date="2016-09-01"
-                date={date}
+                date={data.taskTime}
                 onInput={(e) => {
-                    onInput(e, 'time')
+                    onInput(e, 'taskTime')
                 }}
             />
             <InputCom
@@ -85,27 +142,27 @@ const taskForm = () => {
                 placeholder="请输入货物重量"
                 type="number"
                 disabled={idType}
-                value=""
+                value={data.taskWeight}
                 onInput={(e) => {
-                    onInput(e, 'weight')
+                    onInput(e, 'taskWeight')
                 }}
             />
             <InputCom
                 label="货物信息"
                 placeholder="请输入货物信息"
-                value=""
+                value={data.taskInfo}
                 disabled={idType}
                 onInput={(e) => {
-                    onInput(e, 'weight')
+                    onInput(e, 'taskInfo')
                 }}
             />
             <InputCom
                 label="运费金额"
                 placeholder="请输入运费金额"
-                value=""
+                value={data.taskCost}
                 disabled={idType}
                 onInput={(e) => {
-                    onInput(e, 'weight')
+                    onInput(e, 'taskCost')
                 }}
             />
             {idType === 0 ? (
@@ -124,7 +181,19 @@ const taskForm = () => {
                         acceptTask()
                     }}
                 >
-                    接任务
+                    接收任务
+                </Button>
+            )}
+            {data.taskStatus === 1 && (
+                <Button
+                    className="taskForm-save"
+                    onClick={() => {
+                        Taro.navigateTo({
+                            url: `/pages/qrCode/index?taskCode=${data.taskCode}`,
+                        })
+                    }}
+                >
+                    交接码
                 </Button>
             )}
         </View>
