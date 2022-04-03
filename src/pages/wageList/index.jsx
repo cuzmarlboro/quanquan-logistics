@@ -37,7 +37,7 @@ const WageList = () => {
         request('settle/cost', params).then((res) => {
             if (res.code === 200) {
                 // setWageList(res.data)
-                console.log('工资结算', res)
+                getWageList()
             }
         })
     }
