@@ -138,7 +138,7 @@ const taskForm = () => {
                 }}
             />
             <InputCom
-                label="货物重量"
+                label="货物重量（kg）"
                 placeholder="请输入货物重量"
                 type="number"
                 disabled={idType}
@@ -157,7 +157,7 @@ const taskForm = () => {
                 }}
             />
             <InputCom
-                label="运费金额"
+                label="运费金额（元）"
                 placeholder="请输入运费金额"
                 value={data.taskCost}
                 disabled={idType}

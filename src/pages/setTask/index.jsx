@@ -26,7 +26,6 @@ export default function SetTask() {
 
     // 刷新列表
     const updateList = (type) => {
-        console.log(type)
         const queryUrl = type === 0 ? 'task/query' : 'task/user/query'
         request(queryUrl, {
             pageIndex: 1,
@@ -49,13 +48,7 @@ export default function SetTask() {
     const delTask = (taskCode) => {
         request(`task/delete?taskCode=${taskCode}`).then((res) => {
             if (res.code === 200) {
-                updateList()
-            }
-            if (res.code === 6001) {
-                Taro.showToast({
-                    title: res.msg,
-                    icon: 'none',
-                })
+                updateList(0)
             }
         })
     }

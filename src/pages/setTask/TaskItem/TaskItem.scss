@@ -13,6 +13,9 @@
         line-height: 4.2667vw;
         font-size: 4.2667vw;
         margin-bottom: 2.1333vw;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
         .taskItem-interval{
             display: inline-block;
             width: 4.2667vw;

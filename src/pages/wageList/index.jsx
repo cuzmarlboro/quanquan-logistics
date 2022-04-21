@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { View, Button } from '@tarojs/components'
 import Taro, { internal_safe_get } from '@tarojs/taro'
+import successToast from 'util/successToast'
 import request from 'service/request'
 import WageItem from './WageItem/WageItem'
 import './index.scss'
@@ -36,8 +37,9 @@ const WageList = () => {
         const params = { taskCodeList }
         request('settle/cost', params).then((res) => {
             if (res.code === 200) {
-                // setWageList(res.data)
-                getWageList()
+                successToast('结算成功', () => {
+                    getWageList()
+                })
             }
         })
     }
@@ -54,9 +56,11 @@ const WageList = () => {
                     handleChecked={handleChecked}
                 />
             ))}
-            <Button className="wageList-save" onClick={cost}>
-                工资结算
-            </Button>
+            {wageList.length ? (
+                <Button className="wageList-save" onClick={cost}>
+                    工资结算
+                </Button>
+            ) : null}
         </View>
     )
 }

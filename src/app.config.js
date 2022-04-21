@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-undef
 export default defineAppConfig({
   pages: [
-    // 'pages/qrCode/index',
+
+    // 'pages/iconPage/index',
     'pages/index/index',
     'pages/login/index',
     'pages/handleList/index',

@@ -22,7 +22,7 @@ const IconPage = () => {
                 if (res.code === 200) {
                     console.log('5秒调一次接口看任务状态')
                     if (res.data === 2) {
-                        Taro.navigateTo({
+                        Taro.reLaunch({
                             url: `/pages/iconPage/index`,
                         })
                     }

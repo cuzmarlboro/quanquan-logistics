@@ -14,7 +14,7 @@ function HandleItem(props) {
     return (
         <View className="handleItem" onClick={toPage}>
             <Image src={img} className="handleItem-img" />
-            <Text>{text}</Text>
+            <Text className="handleItem-text">{text}</Text>
             <Image src={right_triangle} className="handleItem-svg" />
         </View>
     )

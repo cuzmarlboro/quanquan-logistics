@@ -3,6 +3,7 @@
 */
 import Taro from '@tarojs/taro'
 import { devBaseURL } from './config.js'
+import errorToast from 'util/errorToast'
 
 
 const getToken = () => {
@@ -37,6 +38,10 @@ const request = async (url, data, mt) => {
                         url: '/pages/index/index'
                     })
                 })
+            }
+            // 报错
+            if (res.data.code === 6001) {
+                errorToast(res.data.msg)
             }
             return res.data
         }
